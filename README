@@ -14,11 +14,11 @@ unicode equivalents (not a combination of composition characters).
 There are two classes of diacritics in vietnamese; tone markers,
 and accents. In VNI input mode, they are represented as follows:
 
-1: dấu sắc
-2: dấu huyền
-3: dấu hỏi
-4: dấu ngã
-5: dấu nặng
+1: dấu sắc (rising tone)
+2: dấu huyền (falling tone)
+3: dấu hỏi (dipping tone)
+4: dấu ngã (glottal rising)
+5: dấu nặng (glottal falling)
 6: hat or caret (^)
 7: horn (in ơ and ư)
 8: moon (˘)
