@@ -1,8 +1,6 @@
-#include <utf.h>
-#include <fmt.h>
+#include <u.h>
+#include <libc.h>
 #include <bio.h>
-
-#define nelem(x) (sizeof (x) / sizeof(*x))
 
 int placetone(Rune *b, Rune *e, int tone, Rune *end);
 int isdelim(Rune r);
@@ -133,7 +131,6 @@ int placetone(Rune *b, Rune *e, int tone, Rune *end)
 
 int main(int argc, char **argv)
 {
-	int i;
 	int isviet, last;
 	enum mark tone;
 	Rune r, t;

@@ -1,9 +1,9 @@
-	$ make
-	$ cp vni2utf8 /usr/local/bin
+	$ mk
+	# mk install
 	
-Build requirements: libutf, libbio, and libfmt ports from plan9:
+Build requirements: plan9 from user space
 
-	http://swtch.com/plan9port/unix/
+	http://swtch.com/plan9port/
 
 vni2utf8 is a small utility that translates ascii text into utf8
 text according to the rules of the vni input method. It reads ascii
@@ -35,11 +35,9 @@ g2io7 → gìơ
 ye6n → yên
 yen6 → yen6
 
-I wrote this tool so I could type Vietnamese in environments where
-I don't have any heavyweight input methods available. It also works
-very well with plan9 tools like Acme and sam, which do not work
-with X11 input methods. Since it only uses the plan9 libraries you
-should be able to compile it for plan9 if you change the header
-declarations and write a mkfile. I use this application on FreeBSD
-64-bit. If you have trouble compiling it, let me know.
-
+I wrote this tool so I could type Vietnamese in environments where I
+don't have any heavyweight input methods available.  It also works
+very well with plan9 tools like Acme and sam, which do not work with
+X11 input methods.  This should compile for plan9 if you change the
+mkfile a little bit.  I use this application on FreeBSD 64-bit.  If
+you have trouble compiling it, let me know.
