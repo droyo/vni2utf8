@@ -1,0 +1,61 @@
+.TH vni2utf8 1 "December 2011" "User Commands"
+.SH NAME
+vni2utf8 - convert vni ascii text to Vietnamese utf8
+.SH SYNOPSIS
+.B vni2utf8
+.SH DESCRIPTION
+.I Vni2utf8
+accepts a stream of vni-encoded ascii text on standard 
+input, and prints to standard output a stream of utf8-encoded
+vietnamese characters. Characters which contain diacritics
+are represented by their precomposed unicode addresses, rather
+than a combination of composition characters. 
+.PP
+.I Vni2utf8
+breaks up the standard input stream into a series of tokens
+separated by non-alphanumeric characters. Every token which
+contains, but does not begin with, one or more numbers is
+subject to parsing rules defined in the VNI encoding. 
+.PP
+Each number represents a different diacritic. Diacritics 1-5
+are transcribed over the final vowel of the word. Diacritics
+6-9 are transcribed over the preceding character. If a 
+diacritic is not valid in a given word, that diacritic's 
+number is copied verbatim to standard output.
+.PP
+The numbers for each diacritic are as follows:
+.TP
+1
+Rising tone (´) as in cá (fish)
+.TP
+2
+Falling tone (`) as in gà (chicken)
+.TP
+3
+Question tone (ˀ) as in hỏi (ask)
+.TP
+4
+Glottal break (~) as in kỹ (technical)
+.TP
+5
+Heavy tone (.) as in xạo (unreliable)
+.TP
+6
+Circumflex (^) as in cô (aunt)
+.TP
+7
+Horn ( ̓) as in khơ (difficult)
+.TP
+8
+Breve (˘) as in năm (year)
+.TP
+9
+Bar (-) as in đi (go)
+
+.SH EXAMPLES
+.TP
+.B "echo Tie6ng1 Vie6t5 | vni2utf8"
+Tiếng Việt
+.SH "SEE ALSO"
+.IR sh (1),
+.IR utf (7)
