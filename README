@@ -5,42 +5,69 @@ Build requirements: plan9 from user space
 
 	http://swtch.com/plan9port/
 
-vni2utf8 is a small utility that translates ascii text into utf8
-text according to the rules of the vni input method. It reads ascii
-text on standard input, and outputs utf8 text on standard output.
-Characters containing diacritics are represented by their precomposed
-unicode equivalents (not a combination of composition characters).
 
-There are two classes of diacritics in vietnamese; tone markers,
-and accents. In VNI input mode, they are represented as follows:
 
-TONES
-1: dấu sắc (rising tone)
-2: dấu huyền (falling tone)
-3: dấu hỏi (dipping tone)
-4: dấu ngã (glottal rising)
-5: dấu nặng (glottal falling)
 
-ACCENTS
-6: hat or caret (^)
-7: horn (in ơ and ư)
-8: moon (˘)
-9: bar (in đ)
+     vni2utf8(1)                                           vni2utf8(1)
 
-The class of the diacritic playes a role in where you can put it.
-You can type the number for a tone anywhere inside or after a word,
-but an accent must come after the letter it is written over
-(disregarding tones). Some examples:
 
-tru7o7ng1 → trướng
-tru17o7ng → trướng
-g2io7 → gìơ
-ye6n → yên
-yen6 → yen6
 
-I wrote this tool so I could type Vietnamese in environments where I
-don't have any heavyweight input methods available.  It also works
-very well with plan9 tools like Acme and sam, which do not work with
-X11 input methods.  This should compile for plan9 if you change the
-mkfile a little bit.  I use this application on FreeBSD 64-bit.  If
-you have trouble compiling it, let me know.
+
+
+     NAME
+          vni2utf8 - convert vni ascii text to Vietnamese utf8
+
+     SYNOPSIS
+          vni2utf8
+
+     DESCRIPTION
+          Vni2utf8 accepts a stream of vni-encoded ascii text on stan-
+          dard input, and prints to standard output a stream of utf8-
+          encoded Vietnamese characters. Input is broken up into words
+          separated by non-alphanumeric characters. Each number in a
+          word represents a different diacritic.
+
+          Diacritics 1-5 are placed over the final vowel of the word,
+          or the penultimate vowel if the word ends in a vowel, and
+          can be typed anywhere within the word itself.
+
+          Diacritics 6-9 are placed over the preceding character. If a
+          diacritic is not valid in a given word or character, the
+          number is copied verbatim to standard output.  The diacrit-
+          ics are ordered as follows:
+
+          1    Rising tone (´) as in cá (fish)
+
+          2    Falling tone (`) as in gà (chicken)
+
+          3    Question tone (ˀ) as in hỏi (ask)
+
+          4    Glottal break (~) as in kỹ (technical)
+
+          5    Heavy tone (.) as in xạo (unreliable)
+
+          6    Circumflex (^) as in cô (aunt)
+
+          7    Horn ( ̓) as in khơ (difficult)
+
+          8    Breve (˘) as in năm (year)
+
+          9    Bar (-) as in đi (go)
+
+
+     EXAMPLES
+          echo Tie6ng1 Vie6t5 | vni2utf8
+               Tiếng Việt
+
+
+
+
+
+
+
+
+
+     Page 1                       Plan 9            (printed 12/21/11)
+
+
+
