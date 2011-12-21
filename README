@@ -1,18 +1,11 @@
-	$ mk
-	# mk install
-	
 Build requirements: plan9 from user space
 
 	http://swtch.com/plan9port/
 
-
-
-
-     vni2utf8(1)                                           vni2utf8(1)
-
-
-
-
+Build:
+	$ mk
+	# mk install
+	
 
      NAME
           vni2utf8 - convert vni ascii text to Vietnamese utf8
@@ -58,16 +51,3 @@ Build requirements: plan9 from user space
      EXAMPLES
           echo Tie6ng1 Vie6t5 | vni2utf8
                Tiếng Việt
-
-
-
-
-
-
-
-
-
-     Page 1                       Plan 9            (printed 12/21/11)
-
-
-
