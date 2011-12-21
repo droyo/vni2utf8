@@ -1,4 +1,4 @@
-.TH vni2utf8 1 "December 2011" "User Commands"
+.TH vni2utf8 1
 .SH NAME
 vni2utf8 - convert vni ascii text to Vietnamese utf8
 .SH SYNOPSIS
@@ -7,23 +7,18 @@ vni2utf8 - convert vni ascii text to Vietnamese utf8
 .I Vni2utf8
 accepts a stream of vni-encoded ascii text on standard 
 input, and prints to standard output a stream of utf8-encoded
-vietnamese characters. Characters which contain diacritics
-are represented by their precomposed unicode addresses, rather
-than a combination of composition characters. 
+Vietnamese characters. Input is broken up into words separated
+by non-alphanumeric characters. Each number in a word 
+represents a different diacritic. 
 .PP
-.I Vni2utf8
-breaks up the standard input stream into a series of tokens
-separated by non-alphanumeric characters. Every token which
-contains, but does not begin with, one or more numbers is
-subject to parsing rules defined in the VNI encoding. 
+Diacritics 1-5 are placed over the final vowel of the word, 
+or the penultimate vowel if the word ends in a vowel, and 
+can be typed anywhere within the word itself. 
 .PP
-Each number represents a different diacritic. Diacritics 1-5
-are transcribed over the final vowel of the word. Diacritics
-6-9 are transcribed over the preceding character. If a 
-diacritic is not valid in a given word, that diacritic's 
-number is copied verbatim to standard output.
-.PP
-The numbers for each diacritic are as follows:
+Diacritics 6-9 are placed over the preceding character. If a 
+diacritic is not valid in a given word or character, 
+the number is copied verbatim to standard output.  The 
+diacritics are ordered as follows:
 .TP
 1
 Rising tone (´) as in cá (fish)
@@ -56,6 +51,3 @@ Bar (-) as in đi (go)
 .TP
 .B "echo Tie6ng1 Vie6t5 | vni2utf8"
 Tiếng Việt
-.SH "SEE ALSO"
-.IR sh (1),
-.IR utf (7)
