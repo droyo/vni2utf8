@@ -131,7 +131,7 @@ int placetone(Rune *b, Rune *e, int tone, Rune *end)
 
 int main(int argc, char **argv)
 {
-	int isviet, last;
+	int isviet;
 	enum mark tone;
 	Rune r, t;
 	Rune word[16], *e, *s;
@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 	Biobuf *wr = Bfdopen(1,O_WRONLY);
 	
 	e = word; isviet = 1; 
-	tone = 0; last = 0;
+	tone = 0;
 	while((r = Bgetrune(rd))) {
 		if (isdelim(r)) {
 			if(!isviet) {
