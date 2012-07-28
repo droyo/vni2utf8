@@ -129,7 +129,7 @@ int placetone(Rune *b, Rune *e, int tone, Rune *end)
 	return 0;
 }
 
-int main(int argc, char **argv)
+void main(int argc, char **argv)
 {
 	int isviet;
 	enum mark tone;
@@ -172,5 +172,5 @@ int main(int argc, char **argv)
 		} else *e++ = r;
 		if (r == Beof) break;
 	}
-	return 0;
+	exit(0);
 }
